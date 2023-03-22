@@ -1,6 +1,7 @@
 // 16 - importamos a Classe Router do express
 import { Router } from 'express'
 import healthCheckController from './controller/healthCheckController'
+import productController from './controller/productController'
 import userController from './controller/userController'
 
 // 17 - criamos uma constante que recebe o objeto Router
@@ -11,6 +12,10 @@ const routes = Router()
 routes.get('/health-check', healthCheckController.check)
 routes.get('/users', userController.findUsers)
 routes.post('/users', userController.createUser)
+routes.post('/products', productController.create)
+routes.get('/products', productController.list)
+routes.get('/products-stock', productController.getStock)
+routes.get('/products-stock-value', productController.getStockValue)
 
 // 19 - exportar a constante routes
 export default routes
