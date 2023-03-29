@@ -10,8 +10,11 @@ const routes = Router()
 // 18 - executamos o método get de Router() , e passamos como parametro, o nome da rota que queremos criar
 // e o método que deve ser executado quando esta rota for chamada
 routes.get('/health-check', healthCheckController.check)
-routes.get('/users', userController.findUsers)
-routes.post('/users', userController.createUser)
+routes.get('/users', userController.findAll)
+routes.get('/users/:id', userController.find)
+routes.post('/users', userController.create)
+routes.delete('/users/:id', userController.delete)
+routes.put('/users/:id', userController.update)
 routes.post('/products', productController.create)
 routes.get('/products', productController.list)
 routes.get('/products-stock', productController.getStock)
