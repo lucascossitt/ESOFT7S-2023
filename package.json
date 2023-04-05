@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node ./src/server.ts",
+    "random": "ts-node ./src/atividades/randomArrayValue/randomArrayValue.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
