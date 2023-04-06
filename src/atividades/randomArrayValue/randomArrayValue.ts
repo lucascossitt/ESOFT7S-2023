@@ -1,7 +1,7 @@
 // Dado um array de objetos, vamos retornar em um novo array
 // Apenas 3 elementos e seus valores deste array, porém, de maneira aleatória
 
-const produtosNovos: any = [
+const produtos1: any = [
     { nome: 'Caneta', qtde: 10, preco: 7.99 },
     { nome: 'Impressora', qtde: 0, preco: 649.50 },
     { nome: 'Caderno', qtde: 4, preco: 27.10 },
@@ -17,13 +17,15 @@ const produtosNovos: any = [
 let produtosSortidos: any = []
 
 while(produtosSortidos.length < 3) {
-    let randomNumber = Math.floor(Math.random() * produtosNovos.length)
-    if(!produtosSortidos.includes(produtosNovos[randomNumber])) {
-        produtosSortidos.push(produtosNovos[randomNumber])
+    let randomNumber = Math.floor(Math.random() * produtos1.length)
+    // esse includes tá verificando se o valor já não está presente no array, por exemplo o valor:
+    //{ nome: 'Impressora', qtde: 0, preco: 649.50 },
+    if(!produtosSortidos.includes(produtos1[randomNumber])) {
+        produtosSortidos.push(produtos1[randomNumber])
     }
 }
 
-console.log(produtosSortidos)
+//console.log(produtosSortidos)
 
 
 function getRandomObjects(array) {
@@ -38,18 +40,23 @@ function getRandomObjects(array) {
     return result
 }
 
-// for (let index = 0; index < 15; index++) {
-//     console.log(getRandomObjects(produtosNovos))
-// }
-
-
-
-while(produtosSortidos.length < 3) {
-    let randomNumber = Math.floor(Math.random() * produtosNovos.length)
-    if(produtosSortidos[randomNumber] !== produtosNovos[produtosSortidos.length]) {
-        produtosSortidos.push(produtosNovos[randomNumber])
+function chooseRandomProducts(productList, itensQuantity) {
+    let randomProducts: any = []
+    
+    while(randomProducts.length < itensQuantity) {
+        let randomNumber = Math.floor(Math.random() * productList.length)
+        let checkObjectValue = false
+        for (let i = 0; i < randomProducts.length; i++) {
+            // validando se o numero aleatório está dentro do array auxiliar
+            if(randomProducts[i] === productList[randomNumber]) {
+                checkObjectValue = true
+            }     
+        }
+        if(!checkObjectValue) randomProducts.push(productList[randomNumber])
     }
+    return randomProducts
 }
 
+console.log(chooseRandomProducts(produtos1, 4))
 
-console.log(produtosSortidos)
+
