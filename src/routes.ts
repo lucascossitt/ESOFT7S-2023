@@ -1,19 +1,18 @@
 import { Router } from 'express'
 import healthCheckController from './controller/healthCheckController'
-import productController from './controller/productController'
-import userController from './controller/userController'
+import userController from './user/user.controller'
+
 
 const routes = Router()
 
 routes.get('/health-check', healthCheckController.check)
-routes.get('/users', userController.findAll)
-routes.get('/users/:id', userController.find)
 routes.post('/users', userController.create)
-routes.delete('/users/:id', userController.delete)
+routes.get('/users', userController.list)
+routes.get('/users/:id', userController.find)
+routes.get('/users-name', userController.findByName)
 routes.put('/users/:id', userController.update)
-routes.post('/products', productController.create)
-routes.get('/products', productController.list)
-routes.get('/products-stock', productController.getStock)
-routes.get('/products-stock-value', productController.getStockValue)
+routes.delete('/users/:id', userController.delete)
+
+
 
 export default routes
