@@ -1,18 +1,22 @@
-import {model, Schema} from "mongoose";
+import {model, Schema} from 'mongoose'
 
-const ProductSchema = new Schema({
+const StockSchema = new Schema({
     name: {
         type: String,
+        required: true,
+    },
+    quantity: {
+        type: Number,
         required: true,
     },
     price: {
         type: Number,
         required: true,
     },
-    quantity: {
+    stockValue: {
         type: Number,
         required: true,
     }
 }, {timestamps: true})
 
-export default model('Product', ProductSchema)
+export default model('productStock', StockSchema)
